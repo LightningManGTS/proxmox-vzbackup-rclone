@@ -39,6 +39,8 @@ script:/root/proxmox-vzbackup-rclone/vzbackup-rclone.sh
 ## Restore old backups
 
 At some point, it'll be very likely that you'll need to pull old backups from your rclone remote that have been removed from the local proxmox server. This can be done by passing the `restore` parameter the date in the format "2022\01\22" or "2022/01/22" and the file to restore to the vzbackup-rclone.sh script:
-`$ ~/proxmox-vzbackup-rclone/vzbackup-rclone.sh restore "2022\01\22" vzdump-qemu-100-2022_01_22-23_41_57.vma.zst`
+```
+$ ~/proxmox-vzbackup-rclone/vzbackup-rclone.sh restore "2022\01\22" vzdump-qemu-100-2022_01_22-23_41_57.vma.zst
+```
 
 You can then do a restore like you normally would from the webui or using the vzdump cli.
