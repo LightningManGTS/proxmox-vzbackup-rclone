@@ -10,7 +10,10 @@ This was built and tested with proxmox-ve-release-7.x  and Pcloud and Google Dri
 
 ## Quickstart
 
-1. SSH or Log into your Proxmox host. Install rclone with `apt-get update;apt-get install rclone;`.
+1. SSH or Log into your Proxmox host. Install rclone with 
+```
+apt-get update;apt-get install rclone;
+```
 Setup an rclone remote and encrypt that remote if so desired. Further information on configuring rclone can be found here:
  - Adding cloud drive to rclone: https://rclone.org/drive/
  - Encryping your rclone contents: https://rclone.org/crypt/
