@@ -28,7 +28,12 @@ git clone https://github.com/TheRealAlexV/proxmox-vzbackup-rclone.git
 chmod +x /root/proxmox-vzbackup-rclone/vzbackup-rclone.sh
 ```
 
-3. Edit vzbackup-rclone.sh and set `$rclone_disk` `$rclone_path` `$rclone_retention` `$restore_path` at the top of the file. 
+3. Edit vzbackup-rclone.sh at the top of the file and set:
+   `$rclone_disk` : The name of rclone cloud storage 
+   `$rclone_path` : Where you store file inside the cloud storage
+   `$rclone_retention` : Retention of files backed up on the cloud storage
+   `$restore_path` : Where I restore locally my cloud storage file
+   
 
 4. Open /etc/vzdump.conf, uncomment the `script:` line and set that to `/root/proxmox-vzbackup-rclone/vzbackup-rclone.sh`:
 ```
@@ -39,9 +44,9 @@ script:/root/proxmox-vzbackup-rclone/vzbackup-rclone.sh
 
 6. You can configure the retention of local backup from the proxmox console.
 
-## Restore old backups
+## Restore
 
-At some point, it'll be very likely that you'll need to pull old backups from your rclone remote that have been removed from the local proxmox server. This can be done by passing the `restore` parameter the date in the format "2022\01\22" or "2022/01/22" and the file to restore to the vzbackup-rclone.sh script:
+At some point, it'll be very likely that you'll need to pull old backups from your rclone remote that have been removed from the local proxmox server. This can be done by passing the `restore` parameter the date in the format `"2022\01\22"` or `"2022/01/22"` and the file to restore to the vzbackup-rclone.sh script:
 ```
 $ ~/proxmox-vzbackup-rclone/vzbackup-rclone.sh restore "2022\01\22" vzdump-qemu-100-2022_01_22-23_41_57.vma.zst
 ```
