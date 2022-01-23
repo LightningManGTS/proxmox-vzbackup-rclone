@@ -29,10 +29,10 @@ chmod +x /root/proxmox-vzbackup-rclone/vzbackup-rclone.sh
 ```
 
 3. Edit vzbackup-rclone.sh at the top of the file and set:
-   `$rclone_disk` : The name of rclone cloud storage 
-   `$rclone_path` : Where you store file inside the cloud storage
-   `$rclone_retention` : Retention of files backed up on the cloud storage
-   `$restore_path` : Where I restore locally my cloud storage file
+   - `$rclone_disk` : The name of rclone cloud storage 
+   - `$rclone_path` : Where you store file inside the cloud storage
+   - `$rclone_retention` : Retention of files backed up on the cloud storage
+   - `$restore_path` : Where I restore locally my cloud storage file
    
 
 4. Open /etc/vzdump.conf, uncomment the `script:` line and set that to `/root/proxmox-vzbackup-rclone/vzbackup-rclone.sh`:
