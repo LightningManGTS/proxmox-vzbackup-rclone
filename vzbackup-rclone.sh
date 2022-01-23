@@ -14,7 +14,6 @@ timepath="$(date +%Y)/$(date +%m)/$(date +%d)"
 
 COMMAND=${1}
 RESTORE_DATE=${2//\\/\/} # format: YYYY/MM/DD or YYYY\MM\DD
-#RESTORE_DATE=${2} # format: YYYY/MM/DD or YYYY\MM\DD
 
 #Debug
 if [[ ${DEBUG} == '1' ]]; then
