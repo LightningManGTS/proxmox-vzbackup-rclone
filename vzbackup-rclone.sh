@@ -1,10 +1,10 @@
 #!/bin/bash
 # ./vzbackup-rclone.sh restore <YYYY/MM/DD> <backed_up_file_in_rclone_disk>
 
-rclone_disk="pcloud"		       # Name of rclone cloud storage 
-rclone_path='/My Data/BACKUPDATA/PVE'  # Where you store file inside the cloud storage
-rclone_retention=5                     # Retention of files backed up  on the cloud storage
-restore_path='/root/RESTORE'	       # Where I restore locally my cloud storage file
+rclone_disk="Your_Rclone_Bucket_Name"		       # Name of rclone cloud storage 
+rclone_path='/My Data/BACKUPDATA/PVE'                  # Where you store file inside the cloud storage
+rclone_retention=10d                                   # Retention of files backed up on the cloud storage. Argument reflects the --min-age flag for rclone. Must specify based on day, week, month, or year (d, w, m, y)
+restore_path='/Path to/Local PVE Backups'	       # Where I restore locally my cloud storage file
 
 #### DO NOT MODIFY UNDER THIS LINE
 DEBUG=0				       # Change to 1 to enable
@@ -39,9 +39,9 @@ if [[ ${COMMAND} == 'job-start' ]]; then
     echo "Deleting backups in $rclone_disk:$rclone_path older than $rclone_retention days."
     #Debug
     if [[ ${DEBUG} == '1' ]]; then
-    	rclone --dry-run --config $rclone_conf  delete  --min-age d $rclone_retention $rclone_disk:"$rclone_path"
+    	rclone --dry-run --config $rclone_conf  delete  --min-age $rclone_retention $rclone_disk:"$rclone_path"
     else
-    	rclone --config $rclone_conf  delete  --min-age d $rclone_retention $rclone_disk:"$rclone_path"
+    	rclone --config $rclone_conf  delete  --min-age $rclone_retention $rclone_disk:"$rclone_path"
     fi
 fi
 
