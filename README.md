@@ -24,14 +24,14 @@ When setting up the encryption, I DO NOT reccomend you encrypt the filenames and
 ```
 apt-get install git
 cd /root
-git clone https://github.com/TheRealAlexV/proxmox-vzbackup-rclone.git
+git clone https://github.com/LightningManGTS/proxmox-vzbackup-rclone.git
 chmod +x /root/proxmox-vzbackup-rclone/vzbackup-rclone.sh
 ```
 
 3. Edit vzbackup-rclone.sh at the top of the file and set:
    - `$rclone_disk` : The name of rclone cloud storage 
    - `$rclone_path` : Where you store file inside the cloud storage
-   - `$rclone_retention` : Retention of files backed up on the cloud storage
+   - `$rclone_retention` : Retention of files backed up on the cloud storage. Argument reflects the --min-age flag for rclone. Must specify a value and day, week, month, or year (d, w, m, y)
    - `$restore_path` : Where I restore locally my cloud storage file
    
 
